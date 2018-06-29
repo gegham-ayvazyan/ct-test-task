@@ -21,10 +21,14 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        if (!$request->ajax()) {
+            return redirect()->route('product.index');
+        }
         $model = new Product();
         return view('product.create', compact('model'));
     }
@@ -39,8 +43,8 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:150',
-            'quantity' => 'required|integer',
-            'price' => 'required|numeric',
+            'quantity' => 'required|integer|max:100000',
+            'price' => 'required|numeric|max:99999.99',
         ]);
         $model = new Product();
         $model->fill($request->only(['name', 'quantity', 'price']));

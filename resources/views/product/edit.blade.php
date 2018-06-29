@@ -3,26 +3,16 @@
     /** @var \Illuminate\Support\ViewErrorBag $errors */
 @endphp
 
-@extends('layouts.app')
+<div class="panel panel-default">
+    <div class="panel-heading">Create new Product</div>
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Create new Product</div>
+    <div class="panel-body">
+        {!! Form::model($model, ['url' => route('product.update', $model->id), 'method' => 'put', 'id' => 'edit-form']) !!}
 
-                    <div class="panel-body">
-                        {!! Form::model($model, ['url' => route('product.update', $model->id), 'method' => 'put']) !!}
+        @include('product._form')
 
-                        @include('product._form')
+        {!! Form::submit('Update', ['class' => 'btn btn-warning']) !!}
 
-                        {!! Form::submit('Update', ['class' => 'btn btn-warning']) !!}
-
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-            </div>
-        </div>
+        {!! Form::close() !!}
     </div>
-@endsection
+</div>
