@@ -24,3 +24,7 @@ Route::group(['prefix' => 'product'], function() {
     Route::get('{id}', 'ProductController@show')->name('product.show');
     Route::delete('{id}', 'ProductController@destroy')->name('product.destroy');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
