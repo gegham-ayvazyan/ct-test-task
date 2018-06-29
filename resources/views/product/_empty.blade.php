@@ -1,3 +1,3 @@
 <tr>
-    <td class="text-center" colspan="4">No products found</td>
+    <td class="text-center" colspan="5">No products found</td>
 </tr>

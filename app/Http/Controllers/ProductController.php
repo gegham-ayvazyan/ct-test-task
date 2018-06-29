@@ -48,20 +48,7 @@ class ProductController extends Controller
 
         return redirect()->route('product.index');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $model = Product::findOrFail($id);
-
-        return view('product.show', compact('model'));
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *

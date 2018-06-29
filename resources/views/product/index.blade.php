@@ -22,6 +22,7 @@
                                 <th>Name</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -33,6 +34,7 @@
                                 <th>Name</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
+                                <th>Actions</th>
                             </tr>
                             </tfoot>
                         </table>
