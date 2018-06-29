@@ -39,8 +39,8 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:150',
-            'quantity' => 'integer',
-            'price' => 'float',
+            'quantity' => 'required|integer',
+            'price' => 'required|numeric',
         ]);
         $model = new Product();
         $model->fill($request->only(['name', 'quantity', 'price']));
@@ -86,8 +86,8 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:150',
-            'quantity' => 'integer',
-            'price' => 'float',
+            'quantity' => 'required|integer',
+            'price' => 'required|numeric',
         ]);
         $model = Product::findOrFail($id);
         $model->fill($request->only(['name', 'quantity', 'price']));

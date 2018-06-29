@@ -9,7 +9,10 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">All Products</div>
+                    <div class="panel-heading">
+                        <span>All Products</span>
+                        <a href="{{ route('product.create') }}" class="btn btn-success btn-sm pull-right">Add New</a>
+                    </div>
 
                     <div class="panel-body">
                         <table class="table table-condensed table-striped table-bordered">
