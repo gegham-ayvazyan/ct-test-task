@@ -2,7 +2,7 @@
     /** @var \App\Models\Product $model */
 @endphp
 
-<tr>
+<tr data-id="{{ $model->id }}">
     <td>{{ $model->id }}</td>
     <td>{{ $model->name }}</td>
     <td>{{ $model->quantity }}</td>

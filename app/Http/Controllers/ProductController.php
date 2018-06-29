@@ -50,17 +50,21 @@ class ProductController extends Controller
         $model->fill($request->only(['name', 'quantity', 'price']));
         $model->save();
 
-        return redirect()->route('product.index');
+        return view('product._item', compact('model'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        if (!$request->ajax()) {
+            return redirect()->route('product.index');
+        }
         $model = Product::findOrFail($id);
 
         return view('product.edit', compact('model'));
@@ -84,7 +88,7 @@ class ProductController extends Controller
         $model->fill($request->only(['name', 'quantity', 'price']));
         $model->save();
 
-        return redirect()->route('product.index');
+        return view('product._item', compact('model'));
     }
 
     /**

@@ -16,7 +16,7 @@
 
                     <div class="panel-body">
                         <div id="form-wrapper" style="display: none;"></div>
-                        <table class="table table-condensed table-striped table-bordered">
+                        <table class="table table-condensed table-striped table-bordered" id="products-table">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -78,8 +78,23 @@
                     },
                 })
             });
-            $(document).on('submit', '#create-form', function(evt) {
-
+            $(document).on('submit', '#create-form, #edit-form', function(evt) {
+                evt.preventDefault();
+                var self = this;
+                $.ajax({
+                    method: 'post',
+                    url: $(self).attr('action'),
+                    data: $(self).serialize(),
+                    success: function(data) {
+                        if ($(self).attr('id') === 'create-form') {
+                            $('#products-table').append(data);
+                        } else {
+                            $('#products-table').find('tr[data-id="'+$(self).data('id')+'"]').replaceWith(data);
+                        }
+                        $('#form-wrapper').html('');
+                    }
+                });
+                console.log($(this).serialize());
             });
             $(document).on('submit', '#edit-form', function(evt) {
 
