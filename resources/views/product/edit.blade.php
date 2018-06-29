@@ -13,7 +13,7 @@
                     <div class="panel-heading">Create new Product</div>
 
                     <div class="panel-body">
-                        {!! Form::model($model, ['url' => route('product.update'), 'method' => 'put']) !!}
+                        {!! Form::model($model, ['url' => route('product.update', $model->id), 'method' => 'put']) !!}
 
                         @include('product._form')
 
