@@ -48,7 +48,7 @@ class ProductController extends Controller
 
         return redirect()->route('product.index');
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -86,13 +86,18 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $model = Product::findOrFail($id);
         $model->delete();
+        if ($request->ajax()) {
+            return response()->json(['success' => true]);
+        }
 
         return redirect()->route('product.index');
     }
